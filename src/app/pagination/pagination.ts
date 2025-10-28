@@ -8,7 +8,6 @@ import { Component, EventEmitter, input, OnInit, Output, Input } from '@angular/
 })
 export class Pagination implements OnInit{
   
-  movies = input<any>([]);
   dataOfMovies =  input<any>({});
   @Output() 
   pageChanged = new EventEmitter<number>();
