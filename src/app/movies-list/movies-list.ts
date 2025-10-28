@@ -1,27 +1,24 @@
-import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, signal, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MovieService } from '../shared/services/movie-service';
 import { CategoryService } from '../shared/services/category-service';
 import { Pagination } from '../pagination/pagination';
+import { SearchBy } from '../search-by/search-by';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [ReactiveFormsModule, Pagination],
+  imports: [ReactiveFormsModule, Pagination, SearchBy],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })
 export class MoviesList {
   
-  searchForm!: FormGroup;
-  @Output()
-  movies = signal<any>([]);
-  @Output()
-  dataOfMovies = signal<any>({});
-
+  movies: any[] = [];
+  dataOfMovies: any = {};
   currentPage: number = 1;
-
   iconUrl = 'https://image.tmdb.org/t/p/w500';
   categories = [];
+  @ViewChild(SearchBy) searchByComponent!: SearchBy;
 
   constructor(private movieService: MovieService,
               private categoryService: CategoryService){}
@@ -32,23 +29,6 @@ export class MoviesList {
     });
     this.categoryService.getAllCategories().subscribe((data) => {
       this.categories = data.genres;
-    })
-
-    this.searchForm = new FormGroup({
-      searchByTitle: new FormControl('', Validators.required)
-    });
-  }
-
-  onSearch(page: number = 1){
-    const title = this.searchForm.get('searchByTitle')?.value;
-    console.log(title);
-    this.currentPage = page;
-    if (!title) return;
-    this.movieService.getMovieByTitle(title, page).subscribe((data) =>{
-      console.log(data);
-      this.dataOfMovies = data;
-      this.movies.set(data.results);
-      window.scrollTo({ top: 100, behavior: 'smooth' });
     })
   }
 
@@ -62,5 +42,8 @@ export class MoviesList {
       
     return categoriesString.slice(0, categoriesString.length - 1);
   }
-
+  
+  onSearchPageChanged(page: number) {
+    this.searchByComponent.onSearch(page);
+  }
 }

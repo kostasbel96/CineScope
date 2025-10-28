@@ -1,17 +1,10 @@
 <div class="d-flex flex-column">
-    <div class="d-flex justify-content-center fade-in">
-        <form [formGroup]="searchForm" class="d-flex" role="search" (ngSubmit)="onSearch()">
-            <input formControlName="searchByTitle" 
-            class="form-control me-2 search-input" 
-            type="search" 
-            placeholder="Search by Title" 
-            aria-label="Search"/>
-            <button [disabled]="searchForm.invalid" class="btn search-btn">Search</button>
-        </form>
-    </div>
-    
+    <app-search-by
+    (movies)="movies = $event"
+    (dataOfMovies)="dataOfMovies = $event"
+    (pageChanged)="currentPage = $event"></app-search-by>
     <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
-        @for(movie of movies(); track movie.id){
+        @for(movie of movies; track movie.id){
             <div class="card movie-card m-3 d-flex flex-column">
                 <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'">
                 <div class="card-body p-2 d-flex flex-column">
@@ -22,11 +15,11 @@
             </div>
         }
     </div>
-    @if(movies().length){
+    @if(movies.length){
         <app-pagination 
-        [movies]="movies" 
+        (movies)="movies" 
         [dataOfMovies]="dataOfMovies"
-        (pageChanged)="onSearch($event)"
+        (pageChanged)="onSearchPageChanged($event)"
         [currentPage]="currentPage"></app-pagination>
     }
 </div>
