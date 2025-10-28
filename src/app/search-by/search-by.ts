@@ -16,6 +16,7 @@ export class SearchBy implements OnInit{
   dataOfMovies = new EventEmitter<any>();
   @Output() pageChanged = new EventEmitter<number>();
   currentPage: number = 1;
+  
   constructor(private movieService: MovieService){}
 
   ngOnInit(): void {
