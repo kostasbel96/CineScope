@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-center align-items-center mt-3 mb-2">
+  <button class="btn btn-outline-danger me-2" (click)="prevPage()" [disabled]="currentPage === 1">
+    Previous
+  </button>
+  <div class="p-2 text-center" style="min-width: 120px;">
+    <span >Page {{ currentPage }} / {{ totalPages }}</span>
+  </div>
+  <button class="btn btn-outline-danger ms-2" (click)="nextPage()" [disabled]="currentPage === totalPages">
+    Next
+  </button>

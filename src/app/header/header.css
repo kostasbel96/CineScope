@@ -1,0 +1,28 @@
+.nav-item{
+    font-size: large;
+    box-sizing: border-box;
+    border-bottom: 1px solid transparent; 
+    transition: border-color 0.5s ease;
+}
+
+
+
+.nav-item:hover{
+    border-bottom: 1px solid red;
+}
+
+.active{
+    border-bottom: 1px solid red;
+}
+
+.logo{
+    width: 100px;
+    margin-top: auto;
+    margin-top: auto;
+}
+
+.navbar{
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, #ff4e50, #f9d423) 1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
