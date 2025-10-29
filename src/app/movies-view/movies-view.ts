@@ -22,12 +22,9 @@ export class MoviesView implements OnInit{
   constructor(private movieService: MovieService,
               private categoryService: CategoryService){}
 
-  async ngOnInit(){
-    const categoriesData = await firstValueFrom(this.categoryService.getAllCategories())
-    this.categories = categoriesData.genres;
-    await this.getMultiplePages();
-    this.catigorizedMovies();
-    this.loading = false;
+  ngOnInit(){
+    this.fetchData();
+    
   }
 
   async getMultiplePages(pages = 50) {
@@ -35,6 +32,14 @@ export class MoviesView implements OnInit{
       const data = await firstValueFrom(this.movieService.getAllMovies(i));
       this.movies.push(...data.results);
     }
+  }
+
+  async fetchData(){
+    const categoriesData = await firstValueFrom(this.categoryService.getAllCategories())
+    this.categories = categoriesData.genres;
+    await this.getMultiplePages();
+    this.catigorizedMovies();
+    this.loading = false;
   }
 
   catigorizedMovies(){
@@ -48,6 +53,7 @@ export class MoviesView implements OnInit{
         }
       }
     }
+    console.log(this.moviesByCategory);
     
   }
 
