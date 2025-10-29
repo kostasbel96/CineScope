@@ -1,0 +1,15 @@
+@if(loading){
+    <div class="spinner"></div>
+}
+@else{
+    @for (cat of categories; track cat.name) {
+        <div>
+            <h3>{{ cat.name }}</h3>
+            <ul>
+            @for (movie of moviesByCategory[cat.name]; track $index) {
+                <li>{{ movie }}</li>
+            }     
+            </ul>
+        </div>
+}
+}

@@ -4,10 +4,11 @@ import { MovieService } from '../shared/services/movie-service';
 import { CategoryService } from '../shared/services/category-service';
 import { Pagination } from '../pagination/pagination';
 import { SearchBy } from '../search-by/search-by';
+import { MoviesView } from '../movies-view/movies-view';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [ReactiveFormsModule, Pagination, SearchBy],
+  imports: [ReactiveFormsModule, Pagination, SearchBy, MoviesView],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })
@@ -17,7 +18,8 @@ export class MoviesList {
   dataOfMovies: any = {};
   currentPage: number = 1;
   iconUrl = 'https://image.tmdb.org/t/p/w500';
-  categories = [];
+  categories = signal([]);
+  hasSearch: boolean = false;
   @ViewChild(SearchBy) searchByComponent!: SearchBy;
 
   constructor(private movieService: MovieService,
@@ -28,13 +30,14 @@ export class MoviesList {
       console.log(data);
     });
     this.categoryService.getAllCategories().subscribe((data) => {
-      this.categories = data.genres;
+      console.log(data.genres);
+      this.categories.set(data.genres);
     })
   }
 
   getCategoriesOfMovie(movie: any): string{
     let categoriesString = "";
-      for (const category of this.categories){
+      for (const category of this.categories()){
         if (movie.genre_ids.includes(category['id'])){
           categoriesString = `${category['name']}/${categoriesString}`
         }

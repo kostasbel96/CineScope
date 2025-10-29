@@ -16,6 +16,8 @@ export class SearchBy implements OnInit{
   dataOfMovies = new EventEmitter<any>();
   @Output() 
   pageChanged = new EventEmitter<number>();
+  @Output() 
+  hasSearch = new EventEmitter<boolean>(false);
   currentPage: number = 1;
 
   constructor(private movieService: MovieService){}
@@ -30,6 +32,7 @@ export class SearchBy implements OnInit{
     const title = this.searchForm.get('searchByTitle')?.value;
     console.log(title);
     this.pageChanged.emit(page);
+    this.hasSearch.emit(true);
     if (!title) return;
     this.movieService.getMovieByTitle(title, page).subscribe((data) =>{
       console.log(data);

@@ -2,8 +2,10 @@
     <app-search-by
     (movies)="movies = $event"
     (dataOfMovies)="dataOfMovies = $event"
-    (pageChanged)="currentPage = $event"></app-search-by>
-    <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
+    (pageChanged)="currentPage = $event"
+    (hasSearch)="hasSearch = $event"></app-search-by>
+    @if(hasSearch){
+        <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
         @for(movie of movies; track movie.id){
             <div class="card movie-card m-3 d-flex flex-column">
                 <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'">
@@ -14,7 +16,13 @@
                 </div>
             </div>
         }
+        
     </div>
+    }@else{
+        <app-movies-view
+        [categories]="categories()"></app-movies-view>
+    }
+    
     @if(movies.length){
         <app-pagination 
         (movies)="movies" 
