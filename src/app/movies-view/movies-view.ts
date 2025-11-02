@@ -1,19 +1,30 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../shared/services/movie-service';
-import { MoviesByCategory } from '../shared/interfaces/movies-by-category';
 import { Category } from '../shared/interfaces/category';
 import { CategoryService } from '../shared/services/category-service';
 import { firstValueFrom } from 'rxjs';
-
+import { CarouselModule, 
+  CarouselInnerComponent, 
+  CarouselItemComponent, 
+  CarouselControlComponent,
+  CarouselCaptionComponent } from '@coreui/angular';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-view',
-  imports: [],
+  imports: [CarouselModule, 
+    CarouselInnerComponent,
+    CarouselItemComponent,
+    CarouselControlComponent,
+    CarouselCaptionComponent,
+    RouterLink
+  ],
   templateUrl: './movies-view.html',
   styleUrl: './movies-view.css',
 })
 export class MoviesView implements OnInit{
   
+  iconUrl = 'https://image.tmdb.org/t/p/w500';
   categories: Category[] = [];
   movies: any[] = [];
   moviesByCategory: { [name: string]: string[] } = {};
@@ -50,11 +61,14 @@ export class MoviesView implements OnInit{
       for(const movie of this.movies){
         if (movie.genre_ids.includes(cat.id)){
           this.moviesByCategory[cat.name].push(movie.title);
+
         }
       }
-    }
-    console.log(this.moviesByCategory);
-    
+    }    
   }
 
+  getMovie(movieTitle: string){
+    return  this.movies
+      .find(movie => movie.title === movieTitle);
+  }
 }
