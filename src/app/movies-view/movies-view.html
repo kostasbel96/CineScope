@@ -12,9 +12,14 @@
             @for (movie of moviesByCategory[cat.name]; track $index) {
             <c-carousel-item>
                 <div class="container p-5 w-100 text-center">
-                    <img [src]="getMovie(movie).poster_path ? iconUrl + getMovie(movie).poster_path : 'assets/logo.png'"
-                        alt="{{movie}}" class="img-fluid" loading="lazy"
-                        style="height: 400px; object-fit: cover; width: auto; margin: 0 auto;" />
+                    <div>
+                        <img [src]="getMovie(movie).poster_path ? iconUrl + getMovie(movie).poster_path : 'assets/logo.png'"
+                        alt="{{movie}}"
+                        class="img-fluid" 
+                        loading="lazy"
+                        [routerLink]="['/movie-details', getMovie(movie).id]"/>
+                    </div>
+                    
                     <c-carousel-caption class="text-light title-caption">
                         <span class="title-movie">{{ movie }}</span>
                     </c-carousel-caption>

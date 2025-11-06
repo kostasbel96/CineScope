@@ -5,10 +5,11 @@ import { CategoryService } from '../shared/services/category-service';
 import { Pagination } from '../pagination/pagination';
 import { SearchBy } from '../search-by/search-by';
 import { MoviesView } from '../movies-view/movies-view';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
-  imports: [ReactiveFormsModule, Pagination, SearchBy, MoviesView],
+  imports: [ReactiveFormsModule, Pagination, SearchBy, MoviesView, RouterLink],
   templateUrl: './movies-list.html',
   styleUrl: './movies-list.css',
 })

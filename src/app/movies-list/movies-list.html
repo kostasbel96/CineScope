@@ -8,11 +8,11 @@
         <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
         @for(movie of movies; track movie.id){
             <div class="card movie-card m-3 d-flex flex-column">
-                <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'">
+                <img [routerLink]="['/movie-details', movie.id]" [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'">
                 <div class="card-body p-2 d-flex flex-column">
                     <h6 class="card-title text-danger mb-1">{{movie.title}}</h6>
                     <p class="card-text text-light font-small mb-2 flex-grow-1">{{getCategoriesOfMovie(movie)}}</p>
-                    <a href="#" class="btn btn-danger btn-sm w-100 w-100 mt-auto">View now</a>
+                    <a [routerLink]="['/movie-details', movie.id]" class="btn btn-danger btn-sm w-100 w-100 mt-auto">View now</a>
                 </div>
             </div>
         }

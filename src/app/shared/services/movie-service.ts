@@ -33,4 +33,10 @@ export class MovieService {
     );
   }
 
+  getMovieVideoById(id: string): Observable<any>{
+    return this.http.get(
+      `${getMovieApi}/${id}/videos?api_key=${environment.key}`
+    );
+  }
+
 }

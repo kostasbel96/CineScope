@@ -1,1 +1,23 @@
-<p>movie-details works!</p>
+<div class="my-container">
+    <div class="d-flex flex-column movie">
+        <div class="p-2">
+            <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'" alt="">
+        </div>
+    </div>
+    <div class="description">
+        <h1>{{movie.title}}</h1>
+        <div>
+            <div>
+                <p>{{movie.overview}}</p>
+            </div>
+            <div>
+                <iframe width="500" height="300"
+                class="video" 
+                [src]="videoUrl" 
+                frameborder="0" 
+                allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
