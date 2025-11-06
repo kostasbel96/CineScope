@@ -61,7 +61,6 @@ export class MoviesView implements OnInit{
       for(const movie of this.movies){
         if (movie.genre_ids.includes(cat.id)){
           this.moviesByCategory[cat.name].push(movie.title);
-
         }
       }
     }    

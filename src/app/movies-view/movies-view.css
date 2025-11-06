@@ -10,6 +10,10 @@
     animation: spin 1s linear infinite;
 }
 
+c-carousel-item {
+    position: relative;
+}
+
 .search-btn {
     background-color: #e50914;
     color: #000000;
@@ -26,6 +30,35 @@
     box-shadow: 0 4px 12px rgba(233, 9, 20, 0.6);
     transform: translateY(-2px);
 }
+
+.category {
+    padding: 20px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #b00610;
+}
+
+.title-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 6px 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 0, 0, 0.481);
+}
+
+.container {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
 
 @keyframes spin {
     to {
