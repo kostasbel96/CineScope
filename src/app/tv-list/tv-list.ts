@@ -1,45 +1,43 @@
-import { Component, EventEmitter, OnInit, Output, signal, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MovieService } from '../shared/services/movie-service';
+import { Component, signal, ViewChild } from '@angular/core';
+import { TvService } from '../shared/services/tv-service';
 import { CategoryService } from '../shared/services/category-service';
-import { Pagination } from '../pagination/pagination';
 import { SearchBy } from '../search-by/search-by';
-import { MoviesView } from '../movies-view/movies-view';
+import { Pagination } from '../pagination/pagination';
 import { RouterLink } from '@angular/router';
+import { TvsView } from "../tvs-view/tvs-view";
 
 @Component({
-  selector: 'app-movies-list',
-  imports: [ReactiveFormsModule, Pagination, SearchBy, MoviesView, RouterLink],
-  templateUrl: './movies-list.html',
-  styleUrl: './movies-list.css',
+  selector: 'app-tv-list',
+  imports: [RouterLink, SearchBy, TvsView, Pagination],
+  templateUrl: './tv-list.html',
+  styleUrl: './tv-list.css',
 })
-export class MoviesList {
-  
-  movies: any[] = [];
-  dataOfMovies: any = {};
+export class TvList {
+  tvs: any[] = [];
+  dataOfTvs: any = {};
   currentPage: number = 1;
   iconUrl = 'https://image.tmdb.org/t/p/w500';
   categories = signal([]);
   hasSearch: boolean = false;
   @ViewChild(SearchBy) searchByComponent!: SearchBy;
 
-  constructor(private movieService: MovieService,
+  constructor(private tvService: TvService,
               private categoryService: CategoryService){}
 
   ngOnInit(){
-    this.movieService.getAllMovies().subscribe((data) =>{
+    this.tvService.getAllTvs().subscribe((data) =>{
       console.log(data);
     });
-    this.categoryService.getAllCategories('movie').subscribe((data) => {
+    this.categoryService.getAllCategories('tv').subscribe((data) => {
       console.log(data.genres);
       this.categories.set(data.genres);
     })
   }
 
-  getCategoriesOfMovie(movie: any): string{
+  getCategoriesOfTv(tv: any): string{
     let categoriesString = "";
       for (const category of this.categories()){
-        if (movie.genre_ids.includes(category['id'])){
+        if (tv.genre_ids.includes(category['id'])){
           categoriesString = `${category['name']}/${categoriesString}`
         }
       }

@@ -1,0 +1,80 @@
+.spinner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #b00610;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+c-carousel-item {
+    position: relative;
+}
+
+.search-btn {
+    background-color: #e50914;
+    color: #000000;
+    border: 1px solid #e50914;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #b00610;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(233, 9, 20, 0.6);
+    transform: translateY(-2px);
+}
+
+.category {
+    padding: 20px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #b00610;
+}
+
+.title-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 300px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 6px 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 0, 0, 0.481);
+}
+
+img{
+    height: 400px;
+    width: 100%;
+    transition: all ease-out 0.2s;
+}
+
+img:hover{
+    height: 450px;
+    transform: translateY(-2px);
+    z-index: -1;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+.container {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

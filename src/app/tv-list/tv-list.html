@@ -1,0 +1,36 @@
+<div class="d-flex flex-column">
+    <app-search-by
+    (tvs)="tvs = $event"
+    (dataOfTvs)="dataOfTvs = $event"
+    (pageChanged)="currentPage = $event"
+    (hasSearch)="hasSearch = $event"
+    [type]="'tv'"></app-search-by>
+    @if(hasSearch){
+        <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
+        @for(tv of tvs; track tv.id){
+            <div class="card movie-card m-3 d-flex flex-column">
+                <img [routerLink]="['/tv-details', tv.id]" [src]="tv.poster_path ? iconUrl + tv.poster_path : 'assets/logo.png'">
+                <div class="card-body p-2 d-flex flex-column">
+                    <h6 class="card-title text-danger mb-1">{{tv.title}}</h6>
+                    <p class="card-text text-light font-small mb-2 flex-grow-1">{{getCategoriesOfTv(tv)}}</p>
+                    <a [routerLink]="['/tv-details', tv.id]" class="btn btn-danger btn-sm w-100 w-100 mt-auto">View now</a>
+                </div>
+            </div>
+        }
+        
+    </div>
+    }@else{
+        <app-tvs-view></app-tvs-view>
+    }
+    
+    @if(tvs.length){
+        <app-pagination 
+        (tvs)="tvs" 
+        [dataOfTvs]="dataOfTvs"
+        (pageChanged)="onSearchPageChanged($event)"
+        [currentPage]="currentPage"
+        [type]="'tv'"></app-pagination>
+    }
+</div>
+
+

@@ -9,11 +9,14 @@ import { Component, EventEmitter, input, OnInit, Output, Input } from '@angular/
 export class Pagination implements OnInit{
   
   dataOfMovies =  input<any>({});
+  dataOfTvs =  input<any>({});
   @Output() 
   pageChanged = new EventEmitter<number>();
 
   @Input()
   currentPage = 1;
+  @Input()
+  type!: string;
   itemsPerPage = 20;
 
   ngOnInit(): void {
@@ -21,7 +24,12 @@ export class Pagination implements OnInit{
   }
 
   get totalPages() {
-    return this.dataOfMovies()?.total_pages ?? 1;
+    if(this.type === 'movie'){
+      return this.dataOfMovies()?.total_pages ?? 1;
+    }
+    else if(this.type === 'tv'){
+      return this.dataOfTvs()?.total_pages ?? 1;
+    }
   }
 
   nextPage() {

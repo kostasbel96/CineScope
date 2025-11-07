@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 
-const discoverCategoryApi = "https://api.themoviedb.org/3/genre/movie/list";
-
+const discoverMovieCategoryApi = "https://api.themoviedb.org/3/genre/movie/list";
+const discoverTvCategoryApi = "https://api.themoviedb.org/3/genre/tv/list";
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +13,17 @@ export class CategoryService {
 
   }
 
-  getAllCategories(): Observable<any>{
+  getAllCategories(type: string): Observable<any>{
+    if (type == 'movie'){
       return this.http.get(
-        `${discoverCategoryApi}?api_key=${environment.key}&language=en-US`
+        `${discoverMovieCategoryApi}?api_key=${environment.key}&language=en-US`
       );
+    }
+    else{
+      return this.http.get(
+        `${discoverTvCategoryApi}?api_key=${environment.key}&language=en-US`
+      );
+    }
+      
     }
 }

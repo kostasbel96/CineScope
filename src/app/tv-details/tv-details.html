@@ -1,0 +1,23 @@
+<div class="my-container">
+    <div class="d-flex flex-column movie">
+        <div class="p-2">
+            <img [src]="tv.poster_path ? iconUrl + tv.poster_path : 'assets/logo.png'" alt="">
+        </div>
+    </div>
+    <div class="description">
+        <h1>{{tv.name}}</h1>
+        <div>
+            <div>
+                <p>{{tv.overview}}</p>
+            </div>
+            <div>
+                <iframe width="500" height="300"
+                class="video" 
+                [src]="videoUrl" 
+                frameborder="0" 
+                allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>

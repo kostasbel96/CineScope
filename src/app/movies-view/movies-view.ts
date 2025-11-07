@@ -35,7 +35,6 @@ export class MoviesView implements OnInit{
 
   ngOnInit(){
     this.fetchData();
-    
   }
 
   async getMultiplePages(pages = 50) {
@@ -46,7 +45,7 @@ export class MoviesView implements OnInit{
   }
 
   async fetchData(){
-    const categoriesData = await firstValueFrom(this.categoryService.getAllCategories())
+    const categoriesData = await firstValueFrom(this.categoryService.getAllCategories('movie'))
     this.categories = categoriesData.genres;
     await this.getMultiplePages();
     this.catigorizedMovies();

@@ -3,7 +3,8 @@
     (movies)="movies = $event"
     (dataOfMovies)="dataOfMovies = $event"
     (pageChanged)="currentPage = $event"
-    (hasSearch)="hasSearch = $event"></app-search-by>
+    (hasSearch)="hasSearch = $event"
+    [type]="'movie'"></app-search-by>
     @if(hasSearch){
         <div class="d-flex flex-row flex-wrap justify-content-center movie-list fade-in">
         @for(movie of movies; track movie.id){
@@ -27,7 +28,8 @@
         (movies)="movies" 
         [dataOfMovies]="dataOfMovies"
         (pageChanged)="onSearchPageChanged($event)"
-        [currentPage]="currentPage"></app-pagination>
+        [currentPage]="currentPage"
+        [type]="'movie'"></app-pagination>
     }
 </div>
 
