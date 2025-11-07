@@ -39,7 +39,7 @@ export class TvsView implements OnInit {
     this.fetchData();
   }
 
-  async getMultiplePages(pages = 50) {
+  async getMultiplePages(pages = 20) {
     for (let i = 1; i <= pages; i++) {
       const data = await firstValueFrom(this.tvService.getAllTvs(i));
       this.tvs.push(...data.results);

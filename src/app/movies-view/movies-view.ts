@@ -37,7 +37,7 @@ export class MoviesView implements OnInit{
     this.fetchData();
   }
 
-  async getMultiplePages(pages = 50) {
+  async getMultiplePages(pages = 20) {
     for (let i = 1; i <= pages; i++) {
       const data = await firstValueFrom(this.movieService.getAllMovies(i));
       this.movies.push(...data.results);
