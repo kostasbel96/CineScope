@@ -52,21 +52,4 @@ The compiled files will be generated in the `dist/` folder.
 - `assets/` – static content (images, logos, etc.)  
 - `tsconfig.json`, `angular.json`, `package.json` – project configuration files  
 
-## ✅ Features & Future Work
 
-### Implemented
-- Fetch multiple pages of TV shows/movies data.  
-- Group results by category (genre).  
-- Display categorized carousels.  
-- Dynamically handle `poster_path` image fallback.
-
-### Planned Enhancements
-- Add detailed pages with cast, seasons, and episode info.  
-- Implement search/filter by title.  
-- Improve UI/UX (modals, animations, transitions).  
-- Add caching or infinite scroll for performance.
-
-
-## 🙏 Acknowledgements
-- The Movie Database (TMDB) for their amazing API.  
-- All open-source contributors and technologies that make this project possible.
