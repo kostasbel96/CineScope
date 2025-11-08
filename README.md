@@ -66,8 +66,6 @@ The compiled files will be generated in the `dist/` folder.
 - Improve UI/UX (modals, animations, transitions).  
 - Add caching or infinite scroll for performance.
 
-## 📄 License
-This project is licensed under the MIT License (or another license of your choice).
 
 ## 🙏 Acknowledgements
 - The Movie Database (TMDB) for their amazing API.  
