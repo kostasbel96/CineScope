@@ -21,6 +21,10 @@
     margin-top: auto;
 }
 
+.logo:hover{
+    cursor: pointer;
+}
+
 .navbar{
     border-bottom: 3px solid;
     border-image: linear-gradient(to right, #ff4e50, #f9d423) 1;

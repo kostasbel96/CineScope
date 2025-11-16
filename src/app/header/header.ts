@@ -11,7 +11,8 @@ export class Header{
   
   menu = {
     routerLinkMovies: '/movies',
-    routerLinkTvs: '/tvs'
+    routerLinkTvs: '/tvs',
+    RouterLinkPopular: '/popular'
   };
 
 
