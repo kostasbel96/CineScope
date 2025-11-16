@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 const discoverMovieApi = "https://api.themoviedb.org/3/discover/movie";
 const searchMovieApi = "https://api.themoviedb.org/3/search/movie";
 const getMovieApi = "https://api.themoviedb.org/3/movie";
+const getPopularMoviesApi = "https://api.themoviedb.org/3/movie/popular";
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +37,12 @@ export class MovieService {
   getMovieVideoById(id: string): Observable<any>{
     return this.http.get(
       `${getMovieApi}/${id}/videos?api_key=${environment.key}`
+    );
+  }
+
+  getPopularMovies(page = 1): Observable<any>{
+    return this.http.get(
+      `${getPopularMoviesApi}?api_key=${environment.key}&page=${page}`
     );
   }
 

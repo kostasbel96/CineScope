@@ -1,3 +1,5 @@
+@if(movie){
+
 <div class="my-container">
     <div class="d-flex flex-column movie">
         <div class="p-2">
@@ -12,13 +14,10 @@
                 <p>Language: {{movie.original_language}}</p>
             </div>
             <div>
-                <iframe width="500" height="300"
-                class="video" 
-                [src]="videoUrl" 
-                frameborder="0" 
-                allowfullscreen>
+                <iframe width="500" height="300" class="video" [src]="videoUrl" frameborder="0" allowfullscreen>
                 </iframe>
             </div>
         </div>
     </div>
 </div>
+}
