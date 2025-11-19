@@ -32,10 +32,10 @@ export class Popular implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.isMobile = window.innerWidth < 768;
+    this.isMobile = window.innerWidth < 850;
 
     window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth < 768;
+      this.isMobile = window.innerWidth < 850;
     });
     this.fetchData();
   }

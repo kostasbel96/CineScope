@@ -2,7 +2,7 @@
 <div class="spinner"></div>
 }
 @else {
-<div class="d-flex flex-column p-5">
+<div class="d-flex flex-column">
     <div class="movies">
         <h3>Movies</h3>
     </div>
@@ -13,7 +13,7 @@
             @for (movie of movieGroups; track $index) {
             <c-carousel-item>
                 <div class="d-flex justify-content-center">
-                    <div>
+                    <div class="p-5">
                         <div class="container p-2 w-100 text-center">
                             <div>
                                 <img [src]="movie[0].poster_path ? iconUrl + movie[0].poster_path : 'assets/logo.png'"
@@ -93,8 +93,8 @@
 
             }
         </c-carousel-inner>
-        <c-carousel-control [routerLink] caption="Previous" direction="prev" />
-        <c-carousel-control [routerLink] caption="Next" direction="next" />
+        <c-carousel-control caption="Previous" direction="prev" />
+        <c-carousel-control caption="Next" direction="next" />
 
     </c-carousel>
     }
@@ -103,30 +103,29 @@
         <c-carousel-inner>
             @for (movie of popularMovies; track movie.id) {
             <c-carousel-item>
-                <div class="container p-2 w-100 text-center">
-                            <div>
-                                <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'"
-                                    alt="{{movie}}" class="img-fluid" loading="lazy"
-                                    [routerLink]="['/movie-details', movie.id]" />
-                            </div>
+                <div class="container p-5 w-100 text-center">
+                    <div>
+                        <img [src]="movie.poster_path ? iconUrl + movie.poster_path : 'assets/logo.png'" alt="{{movie}}"
+                            class="img-fluid" loading="lazy" [routerLink]="['/movie-details', movie.id]" />
+                    </div>
 
-                            <c-carousel-caption class="text-light title-caption">
-                                <span class="title-movie">{{ movie.title }}</span>
-                            </c-carousel-caption>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button [routerLink]="['/movie-details', movie.id]" class="btn search-btn">
-                                View Details
-                            </button>
-                        </div>
+                    <c-carousel-caption class="text-light title-caption">
+                        <span class="title-movie">{{ movie.title }}</span>
+                    </c-carousel-caption>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button [routerLink]="['/movie-details', movie.id]" class="btn search-btn">
+                        View Details
+                    </button>
+                </div>
             </c-carousel-item>
             }
         </c-carousel-inner>
-        <c-carousel-control caption="Previous" direction="prev" />
+        <c-carousel-control  caption="Previous" direction="prev" />
         <c-carousel-control caption="Next" direction="next" />
     </c-carousel>
     }
-    <div class="tvs">
+    <div class="movies">
         <h3>Tv Shows</h3>
     </div>
 </div>

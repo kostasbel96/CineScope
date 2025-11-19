@@ -79,6 +79,10 @@ img:hover{
     position: relative;
 }
 
+.movies h3{
+    margin-left: 20px;
+}
+
 @keyframes spin {
     to {
         transform: rotate(360deg);
