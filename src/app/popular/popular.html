@@ -7,13 +7,12 @@
         <h3>Movies</h3>
     </div>
     @if(!isMobile){
-
     <c-carousel>
         <c-carousel-inner>
             @for (movie of movieGroups; track $index) {
             <c-carousel-item>
                 <div class="d-flex justify-content-center">
-                    <div class="p-5">
+                    <div>
                         <div class="container p-2 w-100 text-center">
                             <div>
                                 <img [src]="movie[0].poster_path ? iconUrl + movie[0].poster_path : 'assets/logo.png'"
@@ -128,5 +127,123 @@
     <div class="movies">
         <h3>Tv Shows</h3>
     </div>
+    @if(!isMobile){
+    <c-carousel>
+        <c-carousel-inner>
+            @for (tv of tvGroups; track $index) {
+            <c-carousel-item>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div class="container p-2 w-100 text-center">
+                            <div>
+                                <img [src]="tv[0].poster_path ? iconUrl + tv[0].poster_path : 'assets/logo.png'"
+                                    alt="{{tv}}" class="img-fluid" loading="lazy"
+                                    [routerLink]="['/tv-details', tv[0].id]" />
+                            </div>
+
+                            <c-carousel-caption class="text-light title-caption">
+                                <span class="title-movie">{{ tv[0].name }}</span>
+                            </c-carousel-caption>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button [routerLink]="['/tv-details', tv[0].id]" class="btn search-btn">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container p-2 w-100 text-center">
+                            <div>
+                                <img [src]="tv[1].poster_path ? iconUrl + tv[1].poster_path : 'assets/logo.png'"
+                                    alt="{{tv}}" class="img-fluid" loading="lazy"
+                                    [routerLink]="['/tv-details', tv[1].id]" />
+                            </div>
+
+                            <c-carousel-caption class="text-light title-caption">
+                                <span class="title-movie">{{ tv[1].name }}</span>
+                            </c-carousel-caption>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button [routerLink]="['/tv-details', tv[1].id]" class="btn search-btn">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container p-2 w-100 text-center">
+                            <div>
+                                <img [src]="tv[2].poster_path ? iconUrl + tv[2].poster_path : 'assets/logo.png'"
+                                    alt="{{tv}}" class="img-fluid" loading="lazy"
+                                    [routerLink]="['/tv-details', tv[2].id]" />
+                            </div>
+
+                            <c-carousel-caption class="text-light title-caption">
+                                <span class="title-movie">{{ tv[2].name }}</span>
+                            </c-carousel-caption>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button [routerLink]="['/tv-details', tv[2].id]" class="btn search-btn">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="container p-2 w-100 text-center">
+                            <div>
+                                <img [src]="tv[3].poster_path ? iconUrl + tv[3].poster_path : 'assets/logo.png'"
+                                    alt="{{tv}}" class="img-fluid" loading="lazy"
+                                    [routerLink]="['/tv-details', tv[3].id]" />
+                            </div>
+
+                            <c-carousel-caption class="text-light title-caption">
+                                <span class="title-movie">{{ tv[3].name }}</span>
+                            </c-carousel-caption>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button [routerLink]="['/tv-details', tv[3].id]" class="btn search-btn">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </c-carousel-item>
+
+            }
+        </c-carousel-inner>
+        <c-carousel-control caption="Previous" direction="prev" />
+        <c-carousel-control caption="Next" direction="next" />
+
+    </c-carousel>
+    }
+    @else {
+    <c-carousel>
+        <c-carousel-inner>
+            @for (tv of popularTvShows; track tv.id) {
+            <c-carousel-item>
+                <div class="container p-5 w-100 text-center">
+                    <div>
+                        <img [src]="tv.poster_path ? iconUrl + tv.poster_path : 'assets/logo.png'" alt="{{tv}}"
+                            class="img-fluid" loading="lazy" [routerLink]="['/tv-details', tv.id]" />
+                    </div>
+
+                    <c-carousel-caption class="text-light title-caption">
+                        <span class="title-movie">{{ tv.name }}</span>
+                    </c-carousel-caption>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button [routerLink]="['/tv-details', tv.id]" class="btn search-btn">
+                        View Details
+                    </button>
+                </div>
+            </c-carousel-item>
+            }
+        </c-carousel-inner>
+        <c-carousel-control  caption="Previous" direction="prev" />
+        <c-carousel-control caption="Next" direction="next" />
+    </c-carousel>
+    }
 </div>
 }

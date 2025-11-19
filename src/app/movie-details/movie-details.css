@@ -6,16 +6,14 @@ img {
 .my-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
     padding: 10px;
 }
 
 .my-container iframe.video {
     max-width: 100%;
-    /* responsive iframe */
     height: 300px;
-    /* αναλογία */
 }
 
 @media screen and (max-width: 560px) {

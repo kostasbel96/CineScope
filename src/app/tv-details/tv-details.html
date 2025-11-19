@@ -1,13 +1,13 @@
 <div class="my-container">
     <div class="d-flex flex-column movie">
         <div class="p-2">
-            <img [src]="tv.poster_path ? iconUrl + tv.poster_path : 'assets/logo.png'" alt="">
+            <img [src]="tv.poster_path ? iconUrl + tv.poster_path! : 'assets/logo.png'" alt="">
         </div>
     </div>
     <div class="description">
         <h1>{{tv.name}}</h1>
         <div>
-            <div>
+            <div class="w-100">
                 <p>{{tv.overview}}</p>
             </div>
             <div>

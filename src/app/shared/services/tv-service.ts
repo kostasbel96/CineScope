@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 const discoverTvApi = "https://api.themoviedb.org/3/discover/tv";
 const searchTvApi = "https://api.themoviedb.org/3/search/tv";
 const getTvApi = "https://api.themoviedb.org/3/tv";
+const getPopularTvShowsApi = "https://api.themoviedb.org/3/tv/popular";
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +40,11 @@ export class TvService {
       `${getTvApi}/${id}/videos?api_key=${environment.key}`
     );
   }
+
+  getPopularTvShows(page = 1): Observable<any>{
+      return this.http.get(
+        `${getPopularTvShowsApi}?api_key=${environment.key}&page=${page}`
+      );
+    }
 
 }
