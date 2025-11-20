@@ -9,6 +9,7 @@ import {
   CarouselControlComponent
 } from "@coreui/angular";
 import { TvService } from '../shared/services/tv-service';
+import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-popular',
@@ -17,7 +18,8 @@ import { TvService } from '../shared/services/tv-service';
     CarouselComponent,
     CarouselItemComponent,
     CarouselCaptionComponent,
-    CarouselControlComponent],
+    CarouselControlComponent,
+    MyCarousel],
   templateUrl: './popular.html',
   styleUrl: './popular.css',
 })
@@ -33,7 +35,7 @@ export class Popular implements OnInit {
 
 
   constructor(private movieService: MovieService,
-            private tvService: TvService) { }
+    private tvService: TvService) { }
 
   ngOnInit(): void {
     this.isMobile = window.innerWidth < 850;
@@ -63,7 +65,7 @@ export class Popular implements OnInit {
     }
   }
 
-  divideTvShows(){
+  divideTvShows() {
     for (let i = 0; i < this.popularTvShows.length; i += 4) {
       this.tvGroups.push(this.popularTvShows.slice(i, i + 4));
     }

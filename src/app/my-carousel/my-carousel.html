@@ -1,0 +1,118 @@
+@if(!isMobile){
+<c-carousel>
+    <c-carousel-inner>
+        @for (item of itemGroups; track $index) {
+        <c-carousel-item>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <div class="container p-2 w-100 text-center">
+                        <div>
+                            <img [src]="item[0].poster_path ? iconUrl + item[0].poster_path : 'assets/logo.png'"
+                                alt="{{item}}" class="img-fluid" loading="lazy"
+                                [routerLink]="[`/${itemType}-details`, item[0].id]" />
+                        </div>
+
+                        <c-carousel-caption class="text-light title-caption">
+                            <span class="title-movie">{{ item[0].title ?? item[0].name }}</span>
+                        </c-carousel-caption>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button [routerLink]="[`/${itemType}-details`, item[0].id]" class="btn search-btn">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="container p-2 w-100 text-center">
+                        <div>
+                            <img [src]="item[1].poster_path ? iconUrl + item[1].poster_path : 'assets/logo.png'"
+                                alt="{{item}}" class="img-fluid" loading="lazy"
+                                [routerLink]="[`/${itemType}-details`, item[1].id]" />
+                        </div>
+
+                        <c-carousel-caption class="text-light title-caption">
+                            <span class="title-movie">{{ item[1].title ?? item[1].name }}</span>
+                        </c-carousel-caption>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button [routerLink]="[`/${itemType}-details`, item[1].id]" class="btn search-btn">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="container p-2 w-100 text-center">
+                        <div>
+                            <img [src]="item[2].poster_path ? iconUrl + item[2].poster_path : 'assets/logo.png'"
+                                alt="{{item}}" class="img-fluid" loading="lazy"
+                                [routerLink]="[`/${itemType}-details`, item[2].id]" />
+                        </div>
+
+                        <c-carousel-caption class="text-light title-caption">
+                            <span class="title-movie">{{ item[2].title ?? item[2].name }}</span>
+                        </c-carousel-caption>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button [routerLink]="[`/${itemType}-details`, item[2].id]" class="btn search-btn">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="container p-2 w-100 text-center">
+                        <div>
+                            <img [src]="item[3].poster_path ? iconUrl + item[3].poster_path : 'assets/logo.png'"
+                                alt="{{item}}" class="img-fluid" loading="lazy"
+                                [routerLink]="[`/${itemType}-details`, item[3].id]" />
+                        </div>
+
+                        <c-carousel-caption class="text-light title-caption">
+                            <span class="title-movie">{{ item[3].title ?? item[3].name }}</span>
+                        </c-carousel-caption>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button [routerLink]="[`/${itemType}-details`, item[3].id]" class="btn search-btn">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </c-carousel-item>
+
+        }
+    </c-carousel-inner>
+    <c-carousel-control caption="Previous" direction="prev" />
+    <c-carousel-control caption="Next" direction="next" />
+
+</c-carousel>
+}
+@else {
+<c-carousel>
+    <c-carousel-inner>
+        @for (item of listItem; track item.id) {
+        <c-carousel-item>
+            <div class="container p-5 w-100 text-center">
+                <div>
+                    <img [src]="item.poster_path ? iconUrl + item.poster_path : 'assets/logo.png'" alt="{{item}}"
+                        class="img-fluid" loading="lazy" [routerLink]="[`/${itemType}-details`, item.id]" />
+                </div>
+
+                <c-carousel-caption class="text-light title-caption">
+                    <span class="title-movie">{{ item.title }}</span>
+                </c-carousel-caption>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button [routerLink]="[`/${itemType}-details`, item.id]" class="btn search-btn">
+                    View Details
+                </button>
+            </div>
+        </c-carousel-item>
+        }
+    </c-carousel-inner>
+    <c-carousel-control caption="Previous" direction="prev" />
+    <c-carousel-control caption="Next" direction="next" />
+</c-carousel>
+}
