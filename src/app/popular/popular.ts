@@ -1,25 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../shared/services/movie-service';
-import { RouterLink } from '@angular/router';
-import {
-  CarouselInnerComponent,
-  CarouselComponent,
-  CarouselItemComponent,
-  CarouselCaptionComponent,
-  CarouselControlComponent
-} from "@coreui/angular";
 import { TvService } from '../shared/services/tv-service';
 import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-popular',
-  imports: [RouterLink,
-    CarouselInnerComponent,
-    CarouselComponent,
-    CarouselItemComponent,
-    CarouselCaptionComponent,
-    CarouselControlComponent,
-    MyCarousel],
+  imports: [MyCarousel],
   templateUrl: './popular.html',
   styleUrl: './popular.css',
 })
@@ -31,18 +17,13 @@ export class Popular implements OnInit {
   loading = true;
   movieGroups: any[][] = [];
   tvGroups: any[][] = [];
-  isMobile = false;
 
 
   constructor(private movieService: MovieService,
     private tvService: TvService) { }
 
   ngOnInit(): void {
-    this.isMobile = window.innerWidth < 850;
-
-    window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth < 850;
-    });
+    
     this.fetchData();
   }
 

@@ -23,11 +23,18 @@ export class MyCarousel {
   itemType: string = '';
   @Input()
   isMobile = false;
+  @Input()
+  movies?: any[];
 
   itemGroups: any[][] = [];
   iconUrl = 'https://image.tmdb.org/t/p/w500';
 
   ngOnInit(): void {
+    this.isMobile = window.innerWidth < 850;
+
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth < 850;
+    });
     this.divide();
   }
 
@@ -37,7 +44,7 @@ export class MyCarousel {
         this.itemGroups.push(this.listItem.slice(i, i + 4));
       }
     }
-    else{
+    else {
       for (let i = 0; i < this.listItem.length; i += 4) {
         this.itemGroups.push(this.listItem.slice(i, i + 4));
       }
@@ -45,5 +52,11 @@ export class MyCarousel {
 
   }
 
+  getMovie(movieTitle: string) {
+    if (this.movies) {
+      return this.movies
+        .find(movie => movie.title === movieTitle);
+    }
+  }
 
 }

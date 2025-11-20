@@ -9,6 +9,7 @@ import { CarouselModule,
   CarouselControlComponent,
   CarouselCaptionComponent } from '@coreui/angular';
 import { RouterLink } from '@angular/router';
+import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-movies-view',
@@ -17,7 +18,8 @@ import { RouterLink } from '@angular/router';
     CarouselItemComponent,
     CarouselControlComponent,
     CarouselCaptionComponent,
-    RouterLink
+    RouterLink,
+    MyCarousel
   ],
   templateUrl: './movies-view.html',
   styleUrl: './movies-view.css',
@@ -65,8 +67,4 @@ export class MoviesView implements OnInit{
     }    
   }
 
-  getMovie(movieTitle: string){
-    return  this.movies
-      .find(movie => movie.title === movieTitle);
-  }
 }
