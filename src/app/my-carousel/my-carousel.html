@@ -2,80 +2,100 @@
 <c-carousel>
     <c-carousel-inner>
         @for (item of itemGroups; track $index) {
+
         <c-carousel-item>
             <div class="d-flex justify-content-center">
+                @let movie0 = getMovie(item[0]?.title ?? item[0]?.name ?? item[0]);
+                @let movie1 = getMovie(item[1]?.title ?? item[1]?.name ?? item[1]);
+                @let movie2 = getMovie(item[2]?.title ?? item[2]?.name ?? item[2]);
+                @let movie3 = getMovie(item[3]?.title ?? item[3]?.name ?? item[3]);
+                @if(movie0){
                 <div>
                     <div class="container p-2 w-100 text-center">
+
                         <div>
-                            <img [src]="getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.poster_path ? iconUrl + getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.poster_path : 'assets/logo.png'"
+                            <img [src]="movie0?.poster_path ? iconUrl + movie0?.poster_path : 'assets/logo.png'"
                                 alt="{{item}}" class="img-fluid" loading="lazy"
-                                [routerLink]="[`/${itemType}-details`, getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.id]" />
+                                [routerLink]="[`/${itemType}-details`, movie0?.id]" />
                         </div>
 
                         <c-carousel-caption class="text-light title-caption">
-                            <span class="title-movie">{{ getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.title ?? getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.name }}</span>
+                            <span class="title-movie">{{ movie0?.title ??
+                                movie0?.name }}</span>
                         </c-carousel-caption>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button [routerLink]="[`/${itemType}-details`, getMovie((item[0]?.title ?? item[0]?.name) ?? item)?.id]" class="btn search-btn">
+                        <button [routerLink]="[`/${itemType}-details`, movie0?.id]" class="btn search-btn">
                             View Details
                         </button>
                     </div>
                 </div>
+                }
+
+                @if(movie1){
                 <div>
                     <div class="container p-2 w-100 text-center">
                         <div>
-                            <img [src]="getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.poster_path ? iconUrl + getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.poster_path : 'assets/logo.png'"
+                            <img [src]="movie1?.poster_path ? iconUrl + movie1?.poster_path : 'assets/logo.png'"
                                 alt="{{item}}" class="img-fluid" loading="lazy"
-                                [routerLink]="[`/${itemType}-details`, getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.id]" />
+                                [routerLink]="[`/${itemType}-details`, movie1?.id]" />
                         </div>
 
                         <c-carousel-caption class="text-light title-caption">
-                            <span class="title-movie">{{ getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.title ?? getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.name }}</span>
+                            <span class="title-movie">{{ movie1?.title ??
+                                movie1?.name }}</span>
                         </c-carousel-caption>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button [routerLink]="[`/${itemType}-details`, getMovie((item[1]?.title ?? item[1]?.name) ?? item)?.id]" class="btn search-btn">
+                        <button [routerLink]="[`/${itemType}-details`, movie1?.id]" class="btn search-btn">
                             View Details
                         </button>
                     </div>
                 </div>
+                }
+                @if(movie2){
                 <div>
                     <div class="container p-2 w-100 text-center">
                         <div>
-                            <img [src]="getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.poster_path ? iconUrl + getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.poster_path : 'assets/logo.png'"
+                            <img [src]="movie2?.poster_path ? iconUrl + movie2?.poster_path : 'assets/logo.png'"
                                 alt="{{item}}" class="img-fluid" loading="lazy"
-                                [routerLink]="[`/${itemType}-details`, getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.id]" />
+                                [routerLink]="[`/${itemType}-details`, movie2?.id]" />
                         </div>
 
                         <c-carousel-caption class="text-light title-caption">
-                            <span class="title-movie">{{ getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.title ?? getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.name  }}</span>
+                            <span class="title-movie">{{ movie2?.title ??
+                                movie2?.name }}</span>
                         </c-carousel-caption>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button [routerLink]="[`/${itemType}-details`, getMovie((item[2]?.title ?? item[2]?.name) ?? item)?.id]" class="btn search-btn">
+                        <button [routerLink]="[`/${itemType}-details`, movie2?.id]" class="btn search-btn">
                             View Details
                         </button>
                     </div>
                 </div>
+                }
+                @if(movie3){
+
                 <div>
                     <div class="container p-2 w-100 text-center">
                         <div>
-                            <img [src]="getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.poster_path ? iconUrl + getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.poster_path : 'assets/logo.png'"
+                            <img [src]="movie3?.poster_path ? iconUrl + movie3?.poster_path : 'assets/logo.png'"
                                 alt="{{item}}" class="img-fluid" loading="lazy"
-                                [routerLink]="[`/${itemType}-details`, getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.id]" />
+                                [routerLink]="[`/${itemType}-details`, movie3?.id]" />
                         </div>
 
                         <c-carousel-caption class="text-light title-caption">
-                            <span class="title-movie">{{ getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.title ?? getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.name }}</span>
+                            <span class="title-movie">{{ movie3?.title ??
+                                movie3?.name }}</span>
                         </c-carousel-caption>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button [routerLink]="[`/${itemType}-details`, getMovie((item[3]?.title ?? item[3]?.name) ?? item)?.id]" class="btn search-btn">
+                        <button [routerLink]="[`/${itemType}-details`, movie3?.id]" class="btn search-btn">
                             View Details
                         </button>
                     </div>
                 </div>
+                }
 
             </div>
 
@@ -96,16 +116,19 @@
         <c-carousel-item>
             <div class="container p-5 w-100 text-center">
                 <div>
-                    <img [src]="getMovie((item.title ?? item.name) ?? item).poster_path ? iconUrl + getMovie((item.title ?? item.name) ?? item).poster_path : 'assets/logo.png'" alt="{{item}}"
-                        class="img-fluid" loading="lazy" [routerLink]="[`/${itemType}-details`, getMovie((item.title ?? item.name) ?? item).id]" />
+                    <img [src]="getMovie((item.title ?? item.name) ?? item).poster_path ? iconUrl + getMovie((item.title ?? item.name) ?? item).poster_path : 'assets/logo.png'"
+                        alt="{{item}}" class="img-fluid" loading="lazy"
+                        [routerLink]="[`/${itemType}-details`, getMovie((item.title ?? item.name) ?? item).id]" />
                 </div>
 
                 <c-carousel-caption class="text-light title-caption">
-                    <span class="title-movie">{{ getMovie((item.title ?? item.name) ?? item).title ?? getMovie((item.title ?? item.name) ?? item).name }}</span>
+                    <span class="title-movie">{{ getMovie((item.title ?? item.name) ?? item).title ??
+                        getMovie((item.title ?? item.name) ?? item).name }}</span>
                 </c-carousel-caption>
             </div>
             <div class="d-flex justify-content-center">
-                <button [routerLink]="[`/${itemType}-details`, getMovie((item.title ?? item.name) ?? item).id]" class="btn search-btn">
+                <button [routerLink]="[`/${itemType}-details`, getMovie((item.title ?? item.name) ?? item).id]"
+                    class="btn search-btn">
                     View Details
                 </button>
             </div>
