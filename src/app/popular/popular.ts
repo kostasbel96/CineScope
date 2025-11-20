@@ -5,8 +5,7 @@ import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-popular',
-  imports: [
-    MyCarousel],
+  imports: [MyCarousel],
   templateUrl: './popular.html',
   styleUrl: './popular.css',
 })
@@ -18,18 +17,13 @@ export class Popular implements OnInit {
   loading = true;
   movieGroups: any[][] = [];
   tvGroups: any[][] = [];
-  isMobile = false;
 
 
   constructor(private movieService: MovieService,
     private tvService: TvService) { }
 
   ngOnInit(): void {
-    this.isMobile = window.innerWidth < 850;
-
-    window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth < 850;
-    });
+    
     this.fetchData();
   }
 

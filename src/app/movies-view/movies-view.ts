@@ -3,21 +3,12 @@ import { MovieService } from '../shared/services/movie-service';
 import { Category } from '../shared/interfaces/category';
 import { CategoryService } from '../shared/services/category-service';
 import { firstValueFrom } from 'rxjs';
-import { CarouselModule, 
-  CarouselInnerComponent, 
-  CarouselItemComponent, 
-  CarouselControlComponent,
-  CarouselCaptionComponent } from '@coreui/angular';
-import { RouterLink } from '@angular/router';
+import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-movies-view',
-  imports: [CarouselModule, 
-    CarouselInnerComponent,
-    CarouselItemComponent,
-    CarouselControlComponent,
-    CarouselCaptionComponent,
-    RouterLink
+  imports: [
+    MyCarousel
   ],
   templateUrl: './movies-view.html',
   styleUrl: './movies-view.css',
@@ -65,8 +56,4 @@ export class MoviesView implements OnInit{
     }    
   }
 
-  getMovie(movieTitle: string){
-    return  this.movies
-      .find(movie => movie.title === movieTitle);
-  }
 }
