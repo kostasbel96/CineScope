@@ -1,24 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../shared/services/movie-service';
-import { RouterLink } from '@angular/router';
-import {
-  CarouselInnerComponent,
-  CarouselComponent,
-  CarouselItemComponent,
-  CarouselCaptionComponent,
-  CarouselControlComponent
-} from "@coreui/angular";
 import { TvService } from '../shared/services/tv-service';
 import { MyCarousel } from '../my-carousel/my-carousel';
 
 @Component({
   selector: 'app-popular',
-  imports: [RouterLink,
-    CarouselInnerComponent,
-    CarouselComponent,
-    CarouselItemComponent,
-    CarouselCaptionComponent,
-    CarouselControlComponent,
+  imports: [
     MyCarousel],
   templateUrl: './popular.html',
   styleUrl: './popular.css',
