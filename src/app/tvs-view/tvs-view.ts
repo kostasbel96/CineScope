@@ -3,24 +3,12 @@ import { TvService } from '../shared/services/tv-service';
 import { CategoryService } from '../shared/services/category-service';
 import { Category } from '../shared/interfaces/category';
 import { firstValueFrom } from 'rxjs';
-import {
-  CarouselModule,
-  CarouselInnerComponent,
-  CarouselItemComponent,
-  CarouselControlComponent,
-  CarouselCaptionComponent
-} from '@coreui/angular';
-import { RouterLink } from '@angular/router';
+import { MyCarousel } from '../my-carousel/my-carousel';
 
 
 @Component({
   selector: 'app-tvs-view',
-  imports: [CarouselModule,
-    CarouselInnerComponent,
-    CarouselItemComponent,
-    CarouselControlComponent,
-    CarouselCaptionComponent,
-    RouterLink],
+  imports: [MyCarousel],
   templateUrl: './tvs-view.html',
   styleUrl: './tvs-view.css',
 })
@@ -65,11 +53,6 @@ export class TvsView implements OnInit {
         }
       }
     }
-  }
-
-  getTv(tvTitle: string) {
-    return this.tvs
-      .find(tv => tv.name === tvTitle);
   }
 
 }
