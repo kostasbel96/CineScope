@@ -23,16 +23,18 @@ export class Popular implements OnInit {
     private tvService: TvService) { }
 
   ngOnInit(): void {
-    
-    this.fetchData();
+    this.fetchMovies();
+    this.fetchTvShows();
   }
 
-  fetchData() {
+  fetchMovies() {
     this.movieService.getPopularMovies(1).subscribe((data) => {
       this.popularMovies = data.results;
       console.log(this.popularMovies);
       this.divideMovies();
     });
+  }
+  fetchTvShows() {
     this.tvService.getPopularTvShows(1).subscribe((data) => {
       this.popularTvShows = data.results;
       this.divideTvShows();
