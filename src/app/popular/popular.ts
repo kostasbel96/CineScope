@@ -30,8 +30,8 @@ export class Popular implements OnInit {
   fetchMovies() {
     this.movieService.getPopularMovies(1).subscribe((data) => {
       this.popularMovies = data.results;
-      console.log(this.popularMovies);
       this.divideMovies();
+      this.loading = false;
     });
   }
   fetchTvShows() {
