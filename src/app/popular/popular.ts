@@ -14,7 +14,8 @@ export class Popular implements OnInit {
   popularMovies: any[] = [];
   popularTvShows: any[] = [];
   iconUrl = 'https://image.tmdb.org/t/p/w500';
-  loading = true;
+  loadingMovies = true;
+  loadingSeries = true;
   movieGroups: any[][] = [];
   tvGroups: any[][] = [];
 
@@ -31,14 +32,14 @@ export class Popular implements OnInit {
     this.movieService.getPopularMovies(1).subscribe((data) => {
       this.popularMovies = data.results;
       this.divideMovies();
-      this.loading = false;
+      this.loadingMovies = false;
     });
   }
   fetchTvShows() {
     this.tvService.getPopularTvShows(1).subscribe((data) => {
       this.popularTvShows = data.results;
       this.divideTvShows();
-      this.loading = false;
+      this.loadingSeries = false;
     });
   }
 
